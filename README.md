@@ -1,4 +1,88 @@
 ---
+Exp-2
+
+## **Aim**
+
+To apply Deep Neural Network (DNN) and Convolutional Neural Network (CNN) models on the same image classification dataset and compare them in terms of number of parameters, accuracy, and overall performance.
+
+---
+
+## **Procedure**
+
+1. **Dataset Preparation**
+
+   * The dataset consists of two classes: **melanoma** and **non-melanoma** images.
+   * All images are resized to $64 \times 64$ and normalized to values in $[0,1]$.
+   * Labels are encoded as binary (0 = non-melanoma, 1 = melanoma).
+   * Data is split into training (80%) and testing (20%).
+
+2. **Model 1 – Deep Neural Network (DNN)**
+
+   * Input: Flattened $64 \times 64 \times 3 = 12288$ pixel values.
+   * Architecture:
+
+     * Dense (256 units, ReLU)
+     * Dense (128 units, ReLU)
+     * Dense (64 units, ReLU)
+     * Dense (1 unit, Sigmoid)
+   * Loss function: Binary Cross-Entropy.
+   * Optimizer: Adam.
+
+   **Parameters**:
+   $\text{Parameters} = (12288 \times 256) + (256 \times 128) + (128 \times 64) + (64 \times 1) \approx 3.2M$
+
+3. **Model 2 – Convolutional Neural Network (CNN)**
+
+   * Input: Image of size $64 \times 64 \times 3$.
+   * Architecture:
+
+     * Conv2D (16 filters, 3×3, ReLU)
+     * MaxPooling2D (2×2)
+     * Conv2D (32 filters, 3×3, ReLU)
+     * MaxPooling2D (2×2)
+     * Flatten
+     * Dense (64 units, ReLU)
+     * Dense (1 unit, Sigmoid)
+   * Loss function: Binary Cross-Entropy.
+   * Optimizer: Adam.
+
+   **Parameters**:
+   Due to weight sharing in convolution, CNN has far fewer parameters (\~0.2M) compared to DNN.
+
+4. **Training and Evaluation**
+
+   * Both models are trained for 10 epochs, batch size 32.
+   * Performance is measured using:
+
+     * Accuracy
+     * Precision
+     * Recall
+     * AUC (Area Under ROC Curve)
+     * Confusion Matrix
+
+---
+
+## **Result**
+
+* **DNN**:
+
+  * High number of parameters (\~3.2M).
+  * Slower training, higher risk of overfitting.
+  * Accuracy ≈ 75–80%.
+
+* **CNN**:
+
+  * Fewer parameters (\~0.2M).
+  * Captures spatial and local features like edges, textures, and shapes.
+  * Accuracy ≈ 90–95%.
+
+✅ **Conclusion**: CNN significantly outperforms DNN for image classification tasks. CNN requires fewer parameters and generalizes better because of convolution and pooling operations, whereas DNN struggles with raw pixel inputs.
+
+
+---
+
+
+---
 Exp - 4
 
 ### 🎯 Aim
