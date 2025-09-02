@@ -1,4 +1,57 @@
 ---
+Exp1
+
+### **Aim**
+
+To train a deep neural network for **skin image classification** (melanoma vs. non-melanoma) and compare the performance of **SGD** and **Adam** optimizers.
+
+---
+
+### **Procedure**
+
+1. **Data Preparation**
+
+   * Loaded melanoma and non-melanoma images, resized to $64 \times 64$, and normalized pixel values to $[0,1]$.
+   * Assigned binary labels: **1 = melanoma**, **0 = non-melanoma**.
+   * Split dataset into training (80%) and testing (20%).
+
+2. **Model Architecture**
+
+   * Input: $64 \times 64 \times 3$ RGB image.
+   * Layers:
+
+     * Conv2D(16, 3×3) → MaxPool
+     * Conv2D(32, 3×3) → MaxPool
+     * Flatten → Dense(64, relu) → Dense(1, sigmoid).
+   * Loss function: **Binary Cross-Entropy**.
+   * Metrics: **Accuracy**.
+
+3. **Training Strategy**
+
+   * Trained **two models** with the same architecture:
+
+     * One with **SGD optimizer** ($\eta = 0.01$).
+     * One with **Adam optimizer** (default).
+   * Each trained for **10 epochs**, batch size = 32.
+
+4. **Evaluation & Visualization**
+
+   * Compared training/validation accuracy curves.
+   * Evaluated on test set using **accuracy**, **classification report**, and **confusion matrix**.
+
+---
+
+### **Result**
+
+* Both models successfully classified melanoma vs. non-melanoma.
+* **Adam optimizer achieved higher accuracy** and faster convergence compared to SGD.
+* Training/validation accuracy plots confirmed that Adam provides better generalization within fewer epochs.
+* **Conclusion:** Adam is more effective for this image classification task.
+
+---
+
+
+---
 Exp-2
 
 ## **Aim**
