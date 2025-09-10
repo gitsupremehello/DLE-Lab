@@ -134,6 +134,45 @@ To apply Deep Neural Network (DNN) and Convolutional Neural Network (CNN) models
 
 ---
 
+Here’s a structured **Aim–Procedure–Result** write-up for your **SSD MobileNet object detection** code:
+
+---
+
+### **Aim**
+
+To implement an **object detection system** using the pre-trained **SSD MobileNet V2** model from TensorFlow Hub.
+To detect and localize objects in an input image with bounding boxes and class IDs.
+
+---
+
+### **Procedure**
+
+1. Download and load the **SSD MobileNet V2** model $(f_\theta)$ from TensorFlow Hub.
+2. Preprocess input image:
+
+   * Read with OpenCV.
+   * Convert from **BGR → RGB**.
+   * Resize to $320 \times 320$.
+3. Run inference:
+
+   $$
+   \text{result} = f_\theta(\text{image})
+   $$
+
+   which outputs detection boxes, scores, and class IDs.
+4. Postprocess results:
+
+   * Keep detections with confidence score $s > 0.5$.
+   * Convert normalized bounding box coordinates $(y_1, x_1, y_2, x_2)$ into pixel values using image height & width.
+5. Draw bounding boxes and labels using **OpenCV**.
+6. Display the processed image with **Matplotlib** and print detection details.
+
+---
+
+### **Result**
+
+The system successfully detected and localized objects in the input image.
+Bounding boxes with labels (class ID and confidence score) were drawn, and a list of detected objects was printed with their **class IDs, confidence scores, and coordinates**.
 
 ---
 Exp - 4
