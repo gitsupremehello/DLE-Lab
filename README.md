@@ -177,4 +177,111 @@ To design a simple Fully Convolutional Network (FCN) for semantic segmentation o
 The trained FCN produces segmentation masks close to the ground truth, showing that the network learns to map scene structures (roads, buildings, vehicles, etc.) into correct class regions. Accuracy improves with more training epochs and larger datasets.
 
 ---
+Aim
 
+To implement an autoencoder for dimensionality reduction on the MNIST dataset.
+To visualize the compressed feature space and reconstructed images.
+
+Procedure
+
+The MNIST dataset 
+𝑥
+∈
+𝑅
+784
+x∈R
+784
+ is normalized to 
+[
+0
+,
+1
+]
+[0,1].
+
+Build an autoencoder with encoder 
+𝑓
+𝜃
+:
+𝑅
+784
+→
+𝑅
+32
+f
+θ
+	​
+
+:R
+784
+→R
+32
+ and decoder 
+𝑔
+𝜙
+:
+𝑅
+32
+→
+𝑅
+784
+g
+ϕ
+	​
+
+:R
+32
+→R
+784
+.
+
+Train the model by minimizing the reconstruction loss:
+
+𝐿
+(
+𝑥
+,
+𝑥
+^
+)
+=
+∥
+𝑥
+−
+𝑔
+𝜙
+(
+𝑓
+𝜃
+(
+𝑥
+)
+)
+∥
+2
+L(x,
+x
+^
+)=∥x−g
+ϕ
+	​
+
+(f
+θ
+	​
+
+(x))∥
+2
+
+using the Adam optimizer.
+
+Use the encoder to obtain compressed features.
+
+Apply t-SNE to project 32D features into 2D for visualization.
+
+Compare original images with reconstructed outputs.
+
+Result
+
+The autoencoder successfully reduced image dimensionality from 784 → 32, preserving essential features.
+t-SNE plots showed clear digit clusters, and reconstructed images closely matched the originals, confirming effective compression and recovery
